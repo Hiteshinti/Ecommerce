@@ -1,0 +1,4 @@
+.products{padding:12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
+.card{border:1px solid #ddd;padding:12px}
+.price{font-weight:bold;margin-top:8px}

@@ -1,0 +1,6 @@
+<div class="dialog-overlay" (click)="closeDialog()">
+  <div class="dialog-box" (click)="$event.stopPropagation()">
+    <button class="dialog-close" (click)="closeDialog()">✕</button>
+    <ng-content></ng-content>
+  </div>
+</div>

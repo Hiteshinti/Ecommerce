@@ -1,0 +1,45 @@
+<div>
+  <h2>Register</h2>
+  <form [formGroup]="registerForm" (ngSubmit)="submit()" novalidate>
+    <div>
+      <label>Name</label>
+      <input type="text" formControlName="name">
+      <div *ngIf="controls['name'].invalid && (controls['name'].dirty || controls['name'].touched)">
+        <small *ngIf="controls['name'].errors?.['required']">Name is required.</small>
+        <small *ngIf="controls['name'].errors?.['minlength']">Name must be at least 2 characters.</small>
+      </div>
+    </div>
+    <div>
+      <label>Email</label>
+      <input type="email" formControlName="email" appUsernameAvailable>
+      <div *ngIf="controls['email'].invalid && (controls['email'].dirty || controls['email'].touched)">
+        <small *ngIf="controls['email'].errors?.['required']">Email is required.</small>
+        <small *ngIf="controls['email'].errors?.['email']">Enter a valid email address.</small>
+        <small *ngIf="controls['email'].errors?.['usernameExists']">Email is already registered.</small>
+      </div>
+    </div>
+    <div>
+      <label>Password</label>
+      <input type="password" formControlName="password">
+      <div *ngIf="controls['password'].invalid && (controls['password'].dirty || controls['password'].touched)">
+        <small *ngIf="controls['password'].errors?.['required']">Password is required.</small>
+        <small *ngIf="controls['password'].errors?.['minlength']">Password must be at least 4 characters.</small>
+      </div>
+    </div>
+    <div>
+      <label>Confirm Password</label>
+      <input type="password" formControlName="confirmPassword" [appPasswordMatch]="'password'">
+      <div *ngIf="controls['confirmPassword'].invalid && (controls['confirmPassword'].dirty || controls['confirmPassword'].touched)">
+        <small *ngIf="controls['confirmPassword'].errors?.['required']">Confirm password is required.</small>
+        <small *ngIf="controls['confirmPassword'].errors?.['passwordMismatch']">Passwords do not match.</small>
+      </div>
+    </div>
+    <div *ngIf="error">{{error}}</div>
+    <div *ngIf="message">{{message}}</div>
+    <button type="submit" [disabled]="registerForm.invalid">Register</button>
+  </form>
+  <div>
+    <span>Already have an account?</span>
+    <a routerLink="/login">Login</a>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+<div class="register-dialog-overlay" (click)="closeDialog()">
+  <div class="register-dialog" (click)="$event.stopPropagation()">
+    <button class="close-btn" (click)="closeDialog()">✕</button>
+    
+    <h2>Register</h2>
+    <form [formGroup]="registerForm" (ngSubmit)="submit()" novalidate>
+      <div>
+        <label>Name</label>
+        <input type="text" formControlName="name">
+        <div *ngIf="registerForm.controls['name'].invalid && (registerForm.controls['name'].dirty || registerForm.controls['name'].touched)" class="error-msg">
+          <small *ngIf="registerForm.controls['name'].errors?.['required']">Name is required.</small>
+          <small *ngIf="registerForm.controls['name'].errors?.['minlength']">Name must be at least 2 characters.</small>
+        </div>
+      </div>
+      <div>
+        <label>Email</label>
+        <input type="email" formControlName="email">
+        <div *ngIf="registerForm.controls['email'].invalid && (registerForm.controls['email'].dirty || registerForm.controls['email'].touched)" class="error-msg">
+          <small *ngIf="registerForm.controls['email'].errors?.['required']">Email is required.</small>
+          <small *ngIf="registerForm.controls['email'].errors?.['email']">Enter a valid email address.</small>
+        </div>
+      </div>
+      <div>
+        <label>Password</label>
+        <input type="password" formControlName="password">
+        <div *ngIf="registerForm.controls['password'].invalid && (registerForm.controls['password'].dirty || registerForm.controls['password'].touched)" class="error-msg">
+          <small *ngIf="registerForm.controls['password'].errors?.['required']">Password is required.</small>
+          <small *ngIf="registerForm.controls['password'].errors?.['minlength']">Password must be at least 4 characters.</small>
+        </div>
+      </div>
+      <div *ngIf="error" class="alert">{{error}}</div>
+      <div *ngIf="message" class="success-msg">{{message}}</div>
+      <button type="submit" [disabled]="registerForm.invalid" class="btn-submit">Register</button>
+    </form>
+    <div class="dialog-footer">
+      <span>Already have an account?</span>
+      <a href="/login" (click)="closeDialog()">Login here</a>
+    </div>
+  </div>
+</div>

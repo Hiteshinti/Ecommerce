@@ -1,0 +1,4 @@
+.auth-box{max-width:360px;margin:20px auto;padding:12px;border:1px solid #ddd}
+.auth-box label{display:block;margin-bottom:8px}
+.auth-box input{width:100%;padding:8px;margin-top:4px}
+.message{color:green;margin:8px 0}

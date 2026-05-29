@@ -1,0 +1,100 @@
+<header class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm py-3">
+  <div class="container">
+
+    <!-- Logo + Brand -->
+    <a class="navbar-brand d-flex align-items-center" routerLink="/products">
+
+      <!-- Logo Icon -->
+      <div
+        class="bg-white text-primary rounded-circle d-flex justify-content-center align-items-center me-2"
+        style="width:45px; height:45px;">
+
+        <i class="bi bi-bag-fill fs-4"></i>
+      </div>
+
+      <!-- Brand Name -->
+      <div>
+        <h4 class="m-0 fw-bold">My E-Commerce</h4>
+        <small class="text-light">Online Shopping Store</small>
+      </div>
+
+    </a>
+
+    <!-- Mobile Toggle -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarContent">
+
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Right Side Buttons -->
+    <div
+      class="collapse navbar-collapse justify-content-end"
+      id="navbarContent">
+
+      <div class="d-flex align-items-center mt-3 mt-lg-0">
+
+        <!-- Cart -->
+        <a
+          routerLink="/cart"
+          class="btn btn-warning position-relative me-2">
+
+          <i class="bi bi-cart3 me-1"></i>
+          Cart
+
+          <!-- Cart Badge -->
+          <span
+            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+
+            2
+          </span>
+
+        </a>
+
+        <!-- Login Button -->
+        <button
+          type="button"
+          class="btn btn-light me-2 fw-semibold"
+          (click)="openLoginDialog()"
+          *ngIf="!isLoggedIn()">
+          Login
+        </button>
+
+        <!-- Register Button -->
+        <button
+          type="button"
+          class="btn btn-dark fw-semibold"
+          (click)="openRegisterDialog()"
+          *ngIf="!isLoggedIn()">
+          Register
+        </button>
+
+        <!-- Profile Icon (when logged in) -->
+        <ng-container *ngIf="isLoggedIn()">
+          <button
+            type="button"
+            class="btn btn-profile"
+            (click)="toggleProfileMenu()"
+            [title]="user?.name || user?.email">
+            👤
+          </button>
+
+          <div class="profile-dropdown" *ngIf="showProfileMenu">
+            <div class="profile-user">{{ user?.name || user?.email }}</div>
+            <button type="button" class="dropdown-item" (click)="closePopups(); router.navigate(['/profile'])">Profile</button>
+            <button type="button" class="dropdown-item" (click)="closePopups(); router.navigate(['/orders'])">Orders</button>
+            <button type="button" class="dropdown-item" (click)="closePopups(); router.navigate(['/settings'])">Settings</button>
+            <hr style="margin: 0.5rem 0;">
+            <button type="button" class="dropdown-item text-danger" (click)="logout()">Logout</button>
+          </div>
+        </ng-container>
+
+      </div>
+
+    </div>
+
+  </div>
+</header>
