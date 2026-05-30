@@ -35,6 +35,6 @@ export class RegisterComponent implements OnInit {
 
   submit(){
    
-   
+     this.auth.register(this.registerForm.value)
   }
 }

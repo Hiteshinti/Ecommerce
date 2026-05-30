@@ -1,56 +1,55 @@
-<div>
-  <h2>Register</h2>
+<div class="auth-box border-0 m-0 p-0">
+  <h2 class="h4 fw-bold text-center mb-4">Register</h2>
   <form [formGroup]="registerForm" (ngSubmit)="submit()" novalidate>
-    <div>
-      <label>Name</label>
-      <input type="text" formControlName="name">
-      <div *ngIf="controls['name'].invalid && (controls['name'].dirty || controls['name'].touched)">
-        <small *ngIf="controls['name'].errors?.['required']">Name is required.</small>
-        <small *ngIf="controls['name'].errors?.['minlength']">Name must be at least 2 characters.</small>
+    <div class="mb-3">
+      <label class="form-label">Name</label>
+      <input type="text" class="form-control" formControlName="name">
+      <div class="text-danger small mt-1" *ngIf="controls['name'].invalid && (controls['name'].dirty || controls['name'].touched)">
+        <div *ngIf="controls['name'].errors?.['required']">Name is required.</div>
+        <div *ngIf="controls['name'].errors?.['minlength']">Name must be at least 2 characters.</div>
       </div>
     </div>
-    <div>
-      <label>Email</label>
-      <input type="email" formControlName="email" appUsernameAvailable>
-      <div *ngIf="controls['email'].invalid && (controls['email'].dirty || controls['email'].touched)">
-        <small *ngIf="controls['email'].errors?.['required']">Email is required.</small>
-        <small *ngIf="controls['email'].errors?.['email']">Enter a valid email address.</small>
-        <small *ngIf="controls['email'].errors?.['usernameExists']">Email is already registered.</small>
+    <div class="mb-3">
+      <label class="form-label">Email</label>
+      <input type="email" class="form-control" formControlName="email" appUsernameAvailable>
+      <div class="text-danger small mt-1" *ngIf="controls['email'].invalid && (controls['email'].dirty || controls['email'].touched)">
+        <div *ngIf="controls['email'].errors?.['required']">Email is required.</div>
+        <div *ngIf="controls['email'].errors?.['email']">Enter a valid email address.</div>
+        <div *ngIf="controls['email'].errors?.['usernameExists']">Email is already registered.</div>
       </div>
     </div>
-    <div>
-      <label>Password</label>
-      <input type="password" formControlName="password">
-      <div *ngIf="controls['password'].invalid && (controls['password'].dirty || controls['password'].touched)">
-        <small *ngIf="controls['password'].errors?.['required']">Password is required.</small>
-        <small *ngIf="controls['password'].errors?.['minlength']">Password must be at least 4 characters.</small>
+    <div class="mb-3">
+      <label class="form-label">Password</label>
+      <input type="password" class="form-control" formControlName="password">
+      <div class="text-danger small mt-1" *ngIf="controls['password'].invalid && (controls['password'].dirty || controls['password'].touched)">
+        <div *ngIf="controls['password'].errors?.['required']">Password is required.</div>
+        <div *ngIf="controls['password'].errors?.['minlength']">Password must be at least 4 characters.</div>
       </div>
     </div>
-    <div>
-      <label>Confirm Password</label>
-      <input type="password" formControlName="confirmPassword" [appPasswordMatch]="'password'">
-      <div *ngIf="controls['confirmPassword'].invalid && (controls['confirmPassword'].dirty || controls['confirmPassword'].touched)">
-        <small *ngIf="controls['confirmPassword'].errors?.['required']">Confirm password is required.</small>
-        <small *ngIf="controls['confirmPassword'].errors?.['passwordMismatch']">Passwords do not match.</small>
+    <div class="mb-3">
+      <label class="form-label">Confirm Password</label>
+      <input type="password" class="form-control" formControlName="confirmPassword" [appPasswordMatch]="'password'">
+      <div class="text-danger small mt-1" *ngIf="controls['confirmPassword'].invalid && (controls['confirmPassword'].dirty || controls['confirmPassword'].touched)">
+        <div *ngIf="controls['confirmPassword'].errors?.['required']">Confirm password is required.</div>
+        <div *ngIf="controls['confirmPassword'].errors?.['passwordMismatch']">Passwords do not match.</div>
       </div>
     </div>
-    <div>
-      <label>Gender</label>
-      <select formControlName="gender">
+    <div class="mb-3">
+      <label class="form-label">Gender</label>
+      <select class="form-select" formControlName="gender">
         <option value="">Select Gender</option>
         <option value="male">Male</option>
         <option value="female">Female</option>
       </select>
-      <div *ngIf=" registerForm.get('gender')?.dirty && registerForm.get('gender')?.touched">
-        <small *ngIf="registerForm.get('gender')?.errors?.['required']">Gender is required.</small>
+      <div class="text-danger small mt-1" *ngIf="registerForm.get('gender')?.invalid && registerForm.get('gender')?.touched">
+        <div *ngIf="registerForm.get('gender')?.errors?.['required']">Gender is required.</div>
       </div>
     </div>
-  
-    
-    <button type="submit" [disabled]="registerForm.invalid">Register</button>
+
+    <button class="btn btn-primary w-100 fw-semibold" type="submit" [disabled]="registerForm.invalid">Register</button>
   </form>
-  <div>
+  <div class="text-center mt-3 small">
     <span>Already have an account?</span>
-    <a routerLink="/login">Login</a>
+    <a class="fw-semibold text-decoration-none ms-1" routerLink="/login">Login</a>
   </div>
 </div>

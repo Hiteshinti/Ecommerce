@@ -4,8 +4,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { DialogComponent } from './dialog/dialog.component';
-import { PasswordMatchDirective } from '../validators/password-match.directive';
-import { UsernameAvailableDirective } from '../validators/username-available.directive';
+import { PasswordMatchDirective } from './password-match.directive';
+import { UsernameAvailableDirective } from './username-available.directive';
 
 @NgModule({
   declarations: [
