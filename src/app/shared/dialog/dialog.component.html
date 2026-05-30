@@ -1,6 +1,9 @@
-<div class="dialog-overlay" (click)="closeDialog()">
-  <div class="dialog-box" (click)="$event.stopPropagation()">
-    <button class="dialog-close" (click)="closeDialog()">&times;</button>
-    <ng-content></ng-content>
+<div class="dialog-box">
+  <button class="dialog-close" type="button" (click)="closeDialog()">&times;</button>
+  <div class="text-center py-3" *ngIf="data.message">
+    {{ data.message }}
   </div>
+  <ng-container *ngIf="data.component">
+    <ng-container *ngComponentOutlet="data.component"></ng-container>
+  </ng-container>
 </div>

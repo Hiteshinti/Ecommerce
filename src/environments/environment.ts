@@ -5,8 +5,8 @@
 export const environment = {
   production: false,
   baseApiUrl: 'http://localhost:5243',
-  GetProductsUrl: '/gateway/products'
-};
+  GetProductsUrl: '/gateway/products',
+  RegisterUrl: '/gateway/register'
 
 /*
  * For easier debugging in development mode, you can import the following file

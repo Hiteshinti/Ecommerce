@@ -1,4 +1,10 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Inject, Type } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+
+interface DialogData {
+  component?: Type<unknown>;
+  message?: string;
+}
 
 @Component({
   selector: 'app-dialog',
@@ -6,15 +12,12 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./dialog.component.css']
 })
 export class DialogComponent {
-  @Input() title: string = '';
-  @Input() content: any;
-  @Input() dialogType: 'login' | 'register' = 'login';
-  @Output() close = new EventEmitter<any>();
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data: DialogData,
+    private dialogRef: MatDialogRef<DialogComponent>
+  ) {}
 
-  onClose: (result: any) => void = () => {};
-
-  closeDialog(result?: any): void {
-    this.close.emit(result);
-    this.onClose(result);
+  closeDialog(): void {
+    this.dialogRef.close();
   }
 }

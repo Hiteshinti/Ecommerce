@@ -4,65 +4,10 @@
 /* Bootstrap Icons from node_modules */
 @import "../node_modules/bootstrap-icons/font/bootstrap-icons.css";
 
+/* Angular Material theme */
+@import "../node_modules/@angular/material/prebuilt-themes/indigo-pink.css";
+
 /* Your custom styles */
 body {
   background-color: #f8f9fa;
-}
-
-/* Dialog Styles */
-.dialog-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 200;
-  animation: fadeIn 0.2s ease;
-}
-
-.dialog-box {
-  background: #fff;
-  border-radius: 12px;
-  padding: 2rem;
-  max-width: 450px;
-  width: 90%;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-  animation: slideUp 0.3s ease;
-  position: relative;
-}
-
-.dialog-close {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-  color: #999;
-  transition: color 0.2s;
-}
-
-.dialog-close:hover {
-  color: #333;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes slideUp {
-  from {
-    transform: translateY(20px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
 }

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -12,7 +13,7 @@ import { CheckoutComponent } from './checkout/checkout.component';
 
 @NgModule({
   declarations: [AppComponent, CartComponent, CheckoutComponent],
-  imports: [BrowserModule, FormsModule, AppRoutingModule, SharedModule, AuthModule, ProductModule],
+  imports: [BrowserModule, BrowserAnimationsModule, FormsModule, AppRoutingModule, SharedModule, AuthModule, ProductModule],
   providers: [],
   bootstrap: [AppComponent]
 })

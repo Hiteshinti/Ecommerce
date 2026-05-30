@@ -1,0 +1,30 @@
+- Generating browser application bundles (phase: setup)...
+√ Browser application bundle generation complete.
+√ Browser application bundle generation complete.
+
+Error: src/environments/environment.ts:19:1 - error TS1005: '}' expected.
+
+19 
+   
+
+  src/environments/environment.ts:5:28
+    5 export const environment = {
+                                 ~
+    The parser expected to find a '}' to match the '{' token here.
+
+
+
+√ Browser application bundle generation complete.
+
+Error: src/environments/environment.ts:19:1 - error TS1005: '}' expected.
+
+19 
+   
+
+  src/environments/environment.ts:5:28
+    5 export const environment = {
+                                 ~
+    The parser expected to find a '}' to match the '{' token here.
+
+
+
