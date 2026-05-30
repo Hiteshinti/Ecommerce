@@ -14,7 +14,7 @@ export class ProductService {
   getProducts():Observable<Product[]>
   {
     return this.$http
-    .get<ResponseMessage<Product[]>>(environment.GetProductsUrl)
+    .get<ResponseMessage<Product[]>>(environment.baseApiUrl + environment.GetProductsUrl)
     .pipe(
       map((response: ResponseMessage<Product[]>) => response.data)
     );

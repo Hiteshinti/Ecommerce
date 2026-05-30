@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  GetProductsUrl: 'http://localhost:3000/gateway/products'
+  baseApiUrl: 'http://localhost:5243',
+  GetProductsUrl: '/gateway/products'
 };
 
 /*

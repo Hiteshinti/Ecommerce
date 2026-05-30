@@ -9,14 +9,14 @@
 
         <div class="card-body d-flex flex-column">
 
-          <h5 class="card-title">{{ p.productname }}</h5>
+          <h5 class="card-title">{{ p.productName }}</h5>
 
           <p class="card-text text-muted flex-grow-1">
             {{ p.category }}
           </p>
 
           <h6 class="text-primary mb-3">
-            ${{ p.unitprice }}
+            ${{ p.unitPrice }}
           </h6>
 
           <button class="btn btn-primary w-100 mt-auto" (click)="add(p)">

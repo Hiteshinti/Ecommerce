@@ -34,8 +34,19 @@
         <small *ngIf="controls['confirmPassword'].errors?.['passwordMismatch']">Passwords do not match.</small>
       </div>
     </div>
-    <div *ngIf="error">{{error}}</div>
-    <div *ngIf="message">{{message}}</div>
+    <div>
+      <label>Gender</label>
+      <select formControlName="gender">
+        <option value="">Select Gender</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+      </select>
+      <div *ngIf=" registerForm.get('gender')?.dirty && registerForm.get('gender')?.touched">
+        <small *ngIf="registerForm.get('gender')?.errors?.['required']">Gender is required.</small>
+      </div>
+    </div>
+  
+    
     <button type="submit" [disabled]="registerForm.invalid">Register</button>
   </form>
   <div>
