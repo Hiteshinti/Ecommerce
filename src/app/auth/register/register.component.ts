@@ -45,11 +45,17 @@ export class RegisterComponent implements OnInit {
       return;
     }
 
-    if(this.auth.register(this.registerForm.value)){
-      this.dialogService.openMessageDialog('Registration successful. Please login.');
-      this.router.navigate(['/products']);
-    } else {
-      this.dialogService.openMessageDialog('Email is already registered.');
-    }
+    this.auth.register(this.registerForm.value).subscribe({
+      next: (data) => {
+        if(data.success){
+          this.dialogService.openLoginDialog();
+        } else {
+          this.dialogService.openMessageDialog('Registration failed. Please try again.');
+        }
+      },
+      error: () => {
+        this.dialogService.openMessageDialog('Registration failed. Please try again.');
+      }
+    });
   }
 }
