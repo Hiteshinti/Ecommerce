@@ -30,24 +30,14 @@ export class LoginComponent implements OnInit {
   }
 
   submit(): void {
-    this.error = '';
-    if(this.loginForm.invalid){
-      this.loginForm.markAllAsTouched();
-      this.error = 'Please fix the errors before submitting.';
-      return;
-    }
-
-    const { email, password } = this.loginForm.value;
-    this.auth.login(email, password).subscribe({
+    
+    this.auth.login(this.loginForm.value).subscribe({
       next: (data) => {
-        if (data.success && data.token) {
+        if(data.token)
+        {
+          localStorage.setItem('user_token', data.token);
           this.router.navigate(['/products']);
-        } else {
-          this.error = 'Invalid credentials';
         }
-      },
-      error: () => {
-        this.error = 'Invalid credentials';
       }
     });
   }

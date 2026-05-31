@@ -7,7 +7,7 @@ export const environment = {
   baseApiUrl: 'http://localhost:5243',
   GetProductsUrl: '/gateway/products',
   RegisterUrl: '/gateway/register',
-  LoginUrl: '/gateway/login'
+  LoginUrl: '/gateway/login'  
 };
 
 /*
