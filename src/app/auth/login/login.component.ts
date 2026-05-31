@@ -38,10 +38,17 @@ export class LoginComponent implements OnInit {
     }
 
     const { email, password } = this.loginForm.value;
-    if(this.auth.login(email, password)){
-      this.router.navigate(['/products']);
-    } else {
-      this.error = 'Invalid credentials';
-    }
+    this.auth.login(email, password).subscribe({
+      next: (data) => {
+        if (data.success && data.token) {
+          this.router.navigate(['/products']);
+        } else {
+          this.error = 'Invalid credentials';
+        }
+      },
+      error: () => {
+        this.error = 'Invalid credentials';
+      }
+    });
   }
 }

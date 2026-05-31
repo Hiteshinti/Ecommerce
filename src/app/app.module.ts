@@ -10,11 +10,15 @@ import { AuthModule } from './auth/auth.module';
 import { ProductModule } from './products/product.module';
 import { CartComponent } from './cart/cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './auth/auth.interceptor';
 
 @NgModule({
   declarations: [AppComponent, CartComponent, CheckoutComponent],
   imports: [BrowserModule, BrowserAnimationsModule, FormsModule, AppRoutingModule, SharedModule, AuthModule, ProductModule],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
