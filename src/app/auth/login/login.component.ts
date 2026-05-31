@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
+import { DialogService } from 'src/app/services/dialog.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private auth: AuthService,
     private router: Router,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private dialogService: DialogService  
   ) {}
 
   ngOnInit(): void {
@@ -37,7 +39,7 @@ export class LoginComponent implements OnInit {
         {
           sessionStorage.setItem('user_token', data.token);
           this.auth.userSubject.next(data);
-          this.router.navigate(['/products']);
+          this.dialogService.closeDialog(); 
         }
       }
     });

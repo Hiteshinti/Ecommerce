@@ -1,14 +1,14 @@
 <div class="container py-4">
-
-
   <div class="row g-4">
-    
     <div class="col-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let p of products">
-      
       <div class="card h-100 shadow-sm">
+<img
+  src="assets/images/mobile.avif"
+  class="card-img-top"
+  alt="Mobile"
+/>
 
         <div class="card-body d-flex flex-column">
-
           <h5 class="card-title">{{ p.productName }}</h5>
 
           <p class="card-text text-muted flex-grow-1">
@@ -22,12 +22,9 @@
           <button class="btn btn-primary w-100 mt-auto" (click)="add(p)">
             Add to cart
           </button>
-
         </div>
 
       </div>
-
     </div>
-
   </div>
 </div>

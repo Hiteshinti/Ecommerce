@@ -10,6 +10,7 @@ import { Product } from 'src/app/models/Product';
 })
 export class ProductListComponent implements OnInit{
   products = [] as Product[];
+  cartItems = [] as Product[];
   constructor(private ps: ProductService, private cart: CartService){
 
   }
@@ -24,7 +25,10 @@ export class ProductListComponent implements OnInit{
   }
 
  
-  add(p:any){ 
-        this.cart.add(p);
-     } 
+  add(p:Product){ 
+       
+      this.cartItems.push(p);  
+      this.cart.$cartIems.next(this.cartItems); 
+
+    } 
 }

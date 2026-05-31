@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from './cart.service';
+import { Product } from '../models/Product';
 
 @Component({
   selector: 'app-cart',
@@ -7,10 +8,18 @@ import { CartService } from './cart.service';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit{
-  items: any[] = [];
+  
+  productItems = [] as Product[];
   constructor(private cart: CartService){}
-  ngOnInit(){ this.items = this.cart.get(); }
-  remove(id:number){ this.cart.remove(id); this.items = this.cart.get(); }
-  clear(){ this.cart.clear(); this.items = []; }
-  subtotal(){ return this.cart.total(); }
+  ngOnInit(){
+
+    this.cart.$cartIems.subscribe(items => {
+          this.productItems = items;
+
+    } );
+  }
+  subtotal(){  
+    return this.productItems.reduce((acc, item) => acc + item.unitPrice * item.quantityStock, 0);  
+  }
+
 }
