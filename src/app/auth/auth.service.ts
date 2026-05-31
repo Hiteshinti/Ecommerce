@@ -2,13 +2,15 @@ import { Injectable } from '@angular/core';
 import { RegisterDto } from '../models/RegisterDto';
 import { HttpClient } from '@angular/common/http';  
 import { environment } from 'src/environments/environment.prod';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { AuthenticationDto } from '../models/AuthenticationDto';
 
 
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
+
+  userSubject = new BehaviorSubject<AuthenticationDto | null>(null); 
   
   constructor(private $http: HttpClient) { }
 
@@ -23,7 +25,8 @@ export class AuthService {
     return this.$http.post<AuthenticationDto>(environment.baseApiUrl+environment.LoginUrl, data);
   }
   logout(){ 
-    localStorage.removeItem('user_token'); 
+    sessionStorage.removeItem('user_token'); 
+    this.userSubject.next(null);
   }
-  current(){ return JSON.parse(localStorage.getItem('user_token')||'null'); }
+ 
 }

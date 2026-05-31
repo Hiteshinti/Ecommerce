@@ -35,7 +35,8 @@ export class LoginComponent implements OnInit {
       next: (data) => {
         if(data.token)
         {
-          localStorage.setItem('user_token', data.token);
+          sessionStorage.setItem('user_token', data.token);
+          this.auth.userSubject.next(data);
           this.router.navigate(['/products']);
         }
       }

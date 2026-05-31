@@ -81,9 +81,8 @@
             [title]="user?.name || user?.email">
             👤
           </button>
-
           <div class="profile-dropdown" *ngIf="showProfileMenu">
-            <div class="profile-user">{{ user?.name || user?.email }}</div>
+            <div class="profile-user">{{ user?.userName || user?.email }}</div>
             <button type="button" class="dropdown-item" (click)="closePopups(); router.navigate(['/profile'])">Profile</button>
             <button type="button" class="dropdown-item" (click)="closePopups(); router.navigate(['/orders'])">Orders</button>
             <button type="button" class="dropdown-item" (click)="closePopups(); router.navigate(['/settings'])">Settings</button>
