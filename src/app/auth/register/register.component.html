@@ -3,10 +3,10 @@
   <form [formGroup]="registerForm" (ngSubmit)="submit()" novalidate>
     <div class="mb-3">
       <label class="form-label">Name</label>
-      <input type="text" class="form-control" formControlName="name">
-      <div class="text-danger small mt-1" *ngIf="controls['name'].invalid && (controls['name'].dirty || controls['name'].touched)">
-        <div *ngIf="controls['name'].errors?.['required']">Name is required.</div>
-        <div *ngIf="controls['name'].errors?.['minlength']">Name must be at least 2 characters.</div>
+      <input type="text" class="form-control" formControlName="userName">
+      <div class="text-danger small mt-1" *ngIf="controls['userName'].invalid && (controls['userName'].dirty || controls['userName'].touched)">
+        <div *ngIf="controls['userName'].errors?.['required']">Name is required.</div>
+        <div *ngIf="controls['userName'].errors?.['minlength']">Name must be at least 2 characters.</div>
       </div>
     </div>
     <div class="mb-3">
