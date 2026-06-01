@@ -4,5 +4,5 @@ export interface Product
     productName:string,
     category:string,
     unitPrice:number,
-    quantityStock:number,
+    quantityInStock:number,
 }

@@ -15,6 +15,13 @@
             {{ p.category }}
           </p>
 
+           <p class="mb-2">
+            <strong>Stock:</strong>
+                  <span class="badge bg-success">
+                   {{ p.quantityInStock > 0 ? p.quantityInStock : 'Out of Stock' }}
+             </span>
+           </p>
+
           <h6 class="text-primary mb-3">
             ${{ p.unitPrice }}
           </h6>
