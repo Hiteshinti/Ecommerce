@@ -27,7 +27,7 @@ export class CartComponent implements OnInit{
     } );
   }
   subtotal(){  
-    return this.productItems.reduce((acc, item) => acc + item.unitPrice, 0);  
+    return this.productItems.reduce((acc, item) => acc + item.unitPrice * item.quantityInStock, 0);  
   }
 
   proceedToCheckout(): void {

@@ -16,15 +16,14 @@
     <div class="cart-details">
       <h4>{{ i.productName }}</h4>
       <p>Unit Price: ${{ i.unitPrice | number:'1.2-2' }}</p>
-
-      <!-- <div class="qty">
-        Quantity: {{ i.quantityStock }}
-      </div> -->
+      <div class="qty">
+        Quantity: {{ i.quantityInStock }}
+      </div>
     </div>
 
     <!-- Price -->
     <div class="cart-price">
-      ${{ (i.unitPrice) | number:'1.2-2' }}
+      ${{ (i.unitPrice * i.quantityInStock) | number:'1.2-2' }}
     </div>
   </div>
 

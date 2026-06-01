@@ -10,7 +10,6 @@ import { Product } from 'src/app/models/Product';
 })
 export class ProductListComponent implements OnInit{
   products = [] as Product[];
-  cartItems: Product[]=[];
   constructor(private ps: ProductService, private cart: CartService){
 
   }
@@ -29,9 +28,16 @@ export class ProductListComponent implements OnInit{
 
  
   add(p:Product){ 
-       
-      this.cartItems.push(p);  
-      this.cart.$cartIems.next(this.cartItems); 
+      const cartItems = [...this.cart.$cartIems.value];
+      const existingItem = cartItems.find(item => item.productId === p.productId);
+
+      if (existingItem) {
+        existingItem.quantityInStock += 1;
+      } else {
+        cartItems.push({ ...p, quantityInStock: 1 });
+      }
+
+      this.cart.$cartIems.next(cartItems); 
 
     } 
 }
