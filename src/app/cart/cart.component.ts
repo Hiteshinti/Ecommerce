@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CartService } from './cart.service';
 import { Product } from '../models/Product';
+import { AuthService } from '../auth/auth.service';
+import { DialogService } from '../services/dialog.service';
 
 @Component({
   selector: 'app-cart',
@@ -10,7 +13,12 @@ import { Product } from '../models/Product';
 export class CartComponent implements OnInit{
   
   productItems = [] as Product[];
-  constructor(private cart: CartService){}
+  constructor(
+    private cart: CartService,
+    private auth: AuthService,
+    private dialogService: DialogService,
+    private router: Router
+  ){}
   ngOnInit(){
 
     this.cart.$cartIems.subscribe(items => {
@@ -19,7 +27,20 @@ export class CartComponent implements OnInit{
     } );
   }
   subtotal(){  
-    return this.productItems.reduce((acc, item) => acc + item.unitPrice * item.quantityStock, 0);  
+    return this.productItems.reduce((acc, item) => acc + item.unitPrice, 0);  
+  }
+
+  proceedToCheckout(): void {
+    if (this.isLoggedIn()) {
+      this.router.navigate(['/checkout']);
+      return;
+    }
+
+    this.dialogService.openLoginDialog();
+  }
+
+  private isLoggedIn(): boolean {
+    return !!this.auth.userSubject.value || !!sessionStorage.getItem('user_token');
   }
 
 }

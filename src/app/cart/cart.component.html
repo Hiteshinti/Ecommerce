@@ -1,13 +1,41 @@
 <div class="cart">
   <h2>Your Cart</h2>
-  <div *ngIf="productItems.length===0">Cart is empty</div>
-  <div *ngFor="let i of productItems" class="cart-row">
-    <div>{{i.productName}} x {{i.quantityStock}}</div>
-    <div>${{i.unitPrice * i.quantityStock | number:'1.2-2'}}</div>
+
+  <div *ngIf="productItems.length === 0" class="empty">
+    Cart is empty
   </div>
-  <div *ngIf="productItems.length>0" class="cart-footer">
-    <div>Subtotal: ${{subtotal() | number:'1.2-2'}}</div>
-    <a routerLink="/checkout"><button>Proceed to Checkout</button></a>
-   
+
+  <div *ngFor="let i of productItems" class="cart-item">
+    
+    <!-- Product Image -->
+    <div class="cart-img">
+      <img src="/assets/images/mobile.avif" alt="{{ i.productName }}" />
+    </div>
+
+    <!-- Product Details -->
+    <div class="cart-details">
+      <h4>{{ i.productName }}</h4>
+      <p>Unit Price: ${{ i.unitPrice | number:'1.2-2' }}</p>
+
+      <!-- <div class="qty">
+        Quantity: {{ i.quantityStock }}
+      </div> -->
+    </div>
+
+    <!-- Price -->
+    <div class="cart-price">
+      ${{ (i.unitPrice) | number:'1.2-2' }}
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div *ngIf="productItems.length > 0" class="cart-footer">
+    <div class="subtotal">
+      Subtotal: ${{ subtotal() | number:'1.2-2' }}
+    </div>
+
+    <button class="checkout-btn" type="button" (click)="proceedToCheckout()">
+      Proceed to Checkout
+    </button>
   </div>
 </div>
