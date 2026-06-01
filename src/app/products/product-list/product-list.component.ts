@@ -10,11 +10,12 @@ import { Product } from 'src/app/models/Product';
 })
 export class ProductListComponent implements OnInit{
   products = [] as Product[];
-  cartItems = [] as Product[];
+  cartItems: Product[]=[];
   constructor(private ps: ProductService, private cart: CartService){
 
   }
   ngOnInit(){ 
+
      this.ps.getProducts().subscribe({
          next: (data:Product[]) => {
           this.products = data;
@@ -22,6 +23,8 @@ export class ProductListComponent implements OnInit{
         },
          error: (err) => console.error('Error fetching products:', err)
      });
+
+     
   }
 
  

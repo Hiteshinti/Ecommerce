@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { AuthService } from '../../auth/auth.service';
 import { DialogService } from '../../services/dialog.service';
+import { CartService } from '../../cart/cart.service'; 
 
 @Component({
   selector: 'app-header',
@@ -12,18 +13,26 @@ import { DialogService } from '../../services/dialog.service';
 export class HeaderComponent implements OnDestroy {
   showProfileMenu = false;
   user: any = null;
+  cartCount: number = 0;
   private userSub: Subscription;
 
   constructor(
     public auth: AuthService,
     public router: Router,
-    private dialogService: DialogService
+    private dialogService: DialogService,
+    private cartService: CartService  
   ) {
     this.userSub = this.auth.userSubject.subscribe(user => {
       this.user = user;
     });
   }
-
+  
+  ngOnInit() {
+      this.cartService.$cartIems.subscribe(items => {  
+         
+         this.cartCount = items.length;  
+     });  
+  }
   ngOnDestroy(): void {
     this.userSub.unsubscribe();
   }
@@ -51,4 +60,5 @@ export class HeaderComponent implements OnDestroy {
     this.closePopups();
     
   }
+  
 }

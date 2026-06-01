@@ -7,6 +7,7 @@ import { FooterComponent } from './footer/footer.component';
 import { DialogComponent } from './dialog/dialog.component';
 import { PasswordMatchDirective } from './password-match.directive';
 import { UsernameAvailableDirective } from './username-available.directive';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -14,9 +15,10 @@ import { UsernameAvailableDirective } from './username-available.directive';
     FooterComponent,
     DialogComponent,
     PasswordMatchDirective,
-    UsernameAvailableDirective
+    UsernameAvailableDirective,
+  
   ],
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, MatDialogModule],
+  imports: [CommonModule, FormsModule, RouterModule, ReactiveFormsModule, MatDialogModule],
   exports: [
     HeaderComponent,
     FooterComponent,

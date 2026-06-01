@@ -15,7 +15,7 @@ import { CartModule } from './cart/cart.module';
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, BrowserAnimationsModule, FormsModule,
-     AppRoutingModule, SharedModule, CartModule, AuthModule, ProductModule],
+     AppRoutingModule, SharedModule, AuthModule, ProductModule],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ],
